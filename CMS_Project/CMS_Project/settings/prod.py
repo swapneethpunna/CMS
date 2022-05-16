@@ -9,8 +9,8 @@ DEBUG=False
 
 ALLOWED_HOSTS=[
 
-    'course_management_system.herukuapp.com',
-    
+    'course-management-system-t2.herukuapp.com',
+
 ]
 DEBUG_PROPAGATE_EXCEPTIONS = True
 LOGGING = {
