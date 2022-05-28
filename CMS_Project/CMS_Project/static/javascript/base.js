@@ -13,7 +13,65 @@ if (!eye.classList.contains("fa-eye-slash")) {
 });
 
   //  validating email address
+// function validate() {
+//     var bday_error = document.getElementById("bday_error");
+//     var bd = document.querySelector("#Birthday_date")
+//     const date = new Date();
+//     const year = date.getFullYear();
+//     let userYear = bd.value.split("-")[0] // 2022-02-12
+//     userYear = parseInt(userYear)
+
+//     if (year-userYear<13) {  
+//         alert("Minimum age should be 13 years");
+//         // bday_error.innerHTML = "Minimum required age is 13 years";
+//         // bday_error.setAttribute("class","error");
+//         // bd.setAttribute("style","border-color: red");
+//     return false;
+
+//     }
+// };
+
+
+// var fnam = document.querySelector("#fname")
+// var lnam =document.querySelector("#Lname")
+// var emailid= document.getElementById("emailid");
+// const signinbtn = document.getElementById("signup");
+// var fname_error = document.getElementById("fname_error");
+// var lname_error = document.getElementById("lname_error");
+// const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+// signinbtn.addEventListener("click", function() {
+//     if (fnam.value.length === 0) {      
+//         // fname_error.innerHTML = "First Name cannot be empty";
+//         // fname_error.setAttribute("class","error");
+//         // fname.setAttribute("style","border-color: red");
+//         alert("First Name cannot be empty");
+//     return false;
+//     }
+
+//     else if (lnam.value.length === 0) {
+//         // lname_error.innerHTML = "Last Name cannot be empty";
+//         // lname_error.setAttribute("class","error");
+//         // Lname.setAttribute("style","border-color: red");
+//         alert("Last Name cannot be empty");
+//     return false;
+//     }     
+// //  e.preventDefault();
+//     else if (reg.test(emailid.value) === false) {  
+//         alert("Invalid Email Address"); 
+//     return false;
+//     }
+// });
+
 function validate() {
+    var fnam = document.querySelector("#fname")
+    var lnam =document.querySelector("#Lname")
+    var emailid= document.getElementById("emailid");
+    const signinbtn = document.getElementById("signup");
+    var fname_error = document.getElementById("fname_error");
+    var lname_error = document.getElementById("lname_error");
+    var user=document.getElementById("usernam");
+    var pass =document.getElementById("password");
+    const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     var bday_error = document.getElementById("bday_error");
     var bd = document.querySelector("#Birthday_date")
     const date = new Date();
@@ -21,42 +79,42 @@ function validate() {
     let userYear = bd.value.split("-")[0] // 2022-02-12
     userYear = parseInt(userYear)
 
-    if (year-userYear<13) {  
-        // alert("Minimum age should be 13 years");
-        bday_error.innerHTML = "Minimum required age is 13 years";
-        bday_error.setAttribute("class","error");
-        bd.setAttribute("style","border-color: red");
-    return false;
-
-    }
-};
-
-
-var fnam = document.querySelector("#fname")
-var lnam =document.querySelector("#Lname")
-var emailid= document.getElementById("emailid");
-const signinbtn = document.getElementById("signup");
-var fname_error = document.getElementById("fname_error");
-var lname_error = document.getElementById("lname_error");
-const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-signinbtn.addEventListener("click", function() {
     if (fnam.value.length === 0) {      
-        fname_error.innerHTML = "First Name cannot be empty";
-        fname_error.setAttribute("class","error");
-        fname.setAttribute("style","border-color: red");
+        // fname_error.innerHTML = "First Name cannot be empty";
+        // fname_error.setAttribute("class","error");
+        // fname.setAttribute("style","border-color: red");
+        alert("First Name cannot be empty");
     return false;
     }
 
     else if (lnam.value.length === 0) {
-        lname_error.innerHTML = "Last Name cannot be empty";
-        lname_error.setAttribute("class","error");
-        Lname.setAttribute("style","border-color: red");
+        // lname_error.innerHTML = "Last Name cannot be empty";
+        // lname_error.setAttribute("class","error");
+        // Lname.setAttribute("style","border-color: red");
+        alert("Last Name cannot be empty");
+    return false;
+    }
+    else if (user.value.length === 0) {
+        // lname_error.innerHTML = "Last Name cannot be empty";
+        // lname_error.setAttribute("class","error");
+        // Lname.setAttribute("style","border-color: red");
+        alert("User Name cannot be empty");
     return false;
     }     
-//  e.preventDefault();
+    else if (year-userYear<13) {  
+        alert("Minimum age should be 13 years");
+        // bday_error.innerHTML = "Minimum required age is 13 years";
+        // bday_error.setAttribute("class","error");
+        // bd.setAttribute("style","border-color: red");
+    return false;
+    }
     else if (reg.test(emailid.value) === false) {  
         alert("Invalid Email Address"); 
     return false;
     }
-});
+    else if (pass.value.length<8){
+        alert("password length should be more 8 characters");
+    return false;
+    }
 
+    }
