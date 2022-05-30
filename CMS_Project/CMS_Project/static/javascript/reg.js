@@ -116,5 +116,4 @@ function validate() {
         alert("password length should be more 8 characters");
     return false;
     }
-
     }

@@ -1,6 +1,7 @@
+from django.shortcuts import redirect, render
 from django.urls import path
-from .views import *
+from . import views  
 
 urlpatterns =[
-    path('', form , name= 'form')
+    path('', views.form , name= 'form')
 ]

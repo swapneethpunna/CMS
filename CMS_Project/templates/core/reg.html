@@ -24,7 +24,7 @@
         <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="col-md-6">                
                 <div class="signup-form" id="cont">
-                    <form class="border p-4 bg-light shadow" action="" onsubmit="return validate()" method="POST">
+                    <form class="border p-4 bg-light shadow" action="{% url 'form' %}" onsubmit="validate()" method="POST">
                         {% csrf_token %}
                         <div class="heading">
                             <b><h2 style="color:#4c4f94;font-weight: 100px;">Create an account</h2></b><hr>
@@ -61,7 +61,16 @@
                             <div class="input-group mb-3 col-12">
                                 <span class="input-group-text" id="basic-addon1"><i class='fas fa-user-alt'></i></span>
                                 <input type="email" class="input form-control" name="email" id="emailid" placeholder="Enter your email id" aria-label="Username" aria-describedby="basic-addon1" />
-                           </div>
+                            </div>
+                            <div>
+                                <!-- {% for message in messages %} -->
+                                {% if message %}
+                                <p>{{message}}</p>
+                                {% else %}
+                                <h5>No message</h5>
+                                {% endif %}
+                                <!-- {% endfor %} -->
+                            </div>
                 
                             <label>Password</label>
                             <div class="input-group mb-1 col-12">
@@ -85,12 +94,13 @@
                             <div class="col-md-12 mt-4 justify-content-center d-flex">
                                 <button class="btn btn-primary" id="signup";>Sign up</button>
                             </div>
+                            
                         </form>
                         </div>
                     
                  </div> 
             </div>
         </div>
-    <script src="{% static 'javascript/base.js' %}"></script>
+    <script src="{% static 'javascript/reg.js' %}"></script>
 </body>
 </html>

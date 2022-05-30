@@ -1,6 +1,8 @@
+from email import message
 import http
 from http.client import HTTPResponse
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect, render
 from django.contrib.auth.models import User, auth
 from django.http import HttpResponse
 from cmsapp.models import regform
@@ -15,9 +17,17 @@ def form(request):
         email=request.POST['email']
         password=request.POST['password']
         username=request.POST['username']
-        user= regform.objects.create(firstName=fname,lastName=Lname,username=username,email=email,password=password,DOB=DOB)
-        user.save()
+        
         # print('User_created')
-        return render(request, 'core/heading.html')
+        
+        if regform.objects.filter(email=email).exists():
+            messages.info(request, 'Email is already taken')
+            return render(request,'core/reg.html')
+        else:
+            user= regform.objects.create(firstName=fname,lastName=Lname,username=username,email=email,password=password,DOB=DOB)
+            user.save()
+            messages.success(request, 'You have been successfully registered')
+            return render(request, 'core/login.html')
     else:
-        return render(request, 'core/base.html')
+        return render(request, 'core/reg.html')
+
