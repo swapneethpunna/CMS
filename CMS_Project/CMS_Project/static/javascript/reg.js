@@ -27,7 +27,8 @@ elements.forEach(element => {
     element.addEventListener('input', () => {
         let span_id = element.parentElement.children[2];
         if (element.value === "") {
-            span_id.innerHTML="This field cannot be empty";
+            span_id.innerHTML="Field can't be empty";
+            span_id.style.color='red';
             element.id = "danger";
 
         } else {
@@ -54,9 +55,10 @@ signup.addEventListener('click',()=>{
 
     if((year-userYear)<13){
         signup.disabled=true;
-        bd.id="danger"
+        // bd.id="danger"
         let span = bd.parentElement.children[2];
         span.innerHTML="Minimum age to register should be 13 years";
+        span.style.color='red';
     }
 
 //validating email
@@ -76,7 +78,7 @@ signup.addEventListener('click',()=>{
 }
     //noticing user
     if((password.value.length > 8) && (regx.test(emailid.value)===true)  && ((year-userYear)>=13)){
-        alert("You have been successfully registered !");
+        // alert("You have been successfully registered !");
         signup.disabled=false;
         
 

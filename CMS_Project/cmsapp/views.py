@@ -26,7 +26,6 @@ def form(request):
         else:
             user= regform.objects.create(firstName=fname,lastName=Lname,username=username,email=email,password=password,DOB=DOB)
             user.save()
-            messages.success(request, 'You have been successfully registered')
             return render(request, 'core/login.html')
     else:
         return render(request, 'core/reg.html')
