@@ -1,119 +1,88 @@
 //password showing and hiding
 const eye = document.getElementById("eye");
-var pw = document.getElementById("password");
+const password = document.getElementById("password");
+const fname= document.getElementById('fname');
+const Lname= document.getElementById('Lname');
+const usernam= document.getElementById('usernam');
+const bd = document.getElementById("Birthday_date");
+const emailid = document.getElementById("emailid");
+const signup = document.getElementById("signup");
+const regx = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+const pw_error = document.getElementById("pw_error");
 
 eye.addEventListener("click", function () {
 if (!eye.classList.contains("fa-eye-slash")) {
     eye.classList.add("fa-eye-slash");        
-    pw.setAttribute("type", "text");
+    password.setAttribute("type", "text");
 } else {
     eye.classList.remove("fa-eye-slash");
-    pw.setAttribute("type","password");
+    password.setAttribute("type","password");
 }
 });
 
-  //  validating email address
-// function validate() {
-//     var bday_error = document.getElementById("bday_error");
-//     var bd = document.querySelector("#Birthday_date")
-//     const date = new Date();
-//     const year = date.getFullYear();
-//     let userYear = bd.value.split("-")[0] // 2022-02-12
-//     userYear = parseInt(userYear)
+let elements = [fname, Lname, usernam, bd, emailid, signup]
 
-//     if (year-userYear<13) {  
-//         alert("Minimum age should be 13 years");
-//         // bday_error.innerHTML = "Minimum required age is 13 years";
-//         // bday_error.setAttribute("class","error");
-//         // bd.setAttribute("style","border-color: red");
-//     return false;
+signup.disabled = true;
+elements.forEach(element => {
+    element.addEventListener('input', () => {
+        let span_id = element.parentElement.children[2];
+        if (element.value === "") {
+            span_id.innerHTML="This field cannot be empty";
+            element.id = "danger";
 
-//     }
-// };
+        } else {
+            span_id.textContent="";
+        }
+
+        if((fname.value !=""   && Lname.value !="" ) && (usernam.value !=""  && emailid.value !="") &&( password.value !="" && bd.value  !="" ) ){
+            signup.disabled=false;
+        } 
+
+        })
+    });
+
+    //using date class
+const date = new Date();
+//extracing year from complete date to check age
+const year = date.getFullYear(); //2022
+// const userYear = Birthday_date.value.split("-")[0]
 
 
-// var fnam = document.querySelector("#fname")
-// var lnam =document.querySelector("#Lname")
-// var emailid= document.getElementById("emailid");
-// const signinbtn = document.getElementById("signup");
-// var fname_error = document.getElementById("fname_error");
-// var lname_error = document.getElementById("lname_error");
-// const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-// signinbtn.addEventListener("click", function() {
-//     if (fnam.value.length === 0) {      
-//         // fname_error.innerHTML = "First Name cannot be empty";
-//         // fname_error.setAttribute("class","error");
-//         // fname.setAttribute("style","border-color: red");
-//         alert("First Name cannot be empty");
-//     return false;
-//     }
-
-//     else if (lnam.value.length === 0) {
-//         // lname_error.innerHTML = "Last Name cannot be empty";
-//         // lname_error.setAttribute("class","error");
-//         // Lname.setAttribute("style","border-color: red");
-//         alert("Last Name cannot be empty");
-//     return false;
-//     }     
-// //  e.preventDefault();
-//     else if (reg.test(emailid.value) === false) {  
-//         alert("Invalid Email Address"); 
-//     return false;
-//     }
-// });
-
-function validate() {
-    var fnam = document.querySelector("#fname")
-    var lnam =document.querySelector("#Lname")
-    var emailid= document.getElementById("emailid");
-    const signinbtn = document.getElementById("signup");
-    var fname_error = document.getElementById("fname_error");
-    var lname_error = document.getElementById("lname_error");
-    var user=document.getElementById("usernam");
-    var pass =document.getElementById("password");
-    const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    var bday_error = document.getElementById("bday_error");
-    var bd = document.querySelector("#Birthday_date")
-    const date = new Date();
-    const year = date.getFullYear();
+signup.addEventListener('click',()=>{
     let userYear = bd.value.split("-")[0] // 2022-02-12
     userYear = parseInt(userYear)
 
-    if (fnam.value.length === 0) {      
-        // fname_error.innerHTML = "First Name cannot be empty";
-        // fname_error.setAttribute("class","error");
-        // fname.setAttribute("style","border-color: red");
-        alert("First Name cannot be empty");
-    return false;
+    if((year-userYear)<13){
+        signup.disabled=true;
+        bd.id="danger"
+        let span = bd.parentElement.children[2];
+        span.innerHTML="Minimum age to register should be 13 years";
     }
 
-    else if (lnam.value.length === 0) {
-        // lname_error.innerHTML = "Last Name cannot be empty";
-        // lname_error.setAttribute("class","error");
-        // Lname.setAttribute("style","border-color: red");
-        alert("Last Name cannot be empty");
-    return false;
+//validating email
+    if(regx.test(emailid.value)===false){
+        signup.disabled=true;
+        emailid.id="danger"
+        let span = emailid.parentElement.children[2];
+        span.innerHTML="Invaild Email"
+
+    //validating date
+
+    if (password.value.length < 8) { // remember to add span in html and ccs 
+        pw_error.innerHTML = "Password length should not be less than 8 characters";
+        pw_error.setAttribute("class","error");
+        password.setAttribute("style","border-color: red");
     }
-    else if (user.value.length === 0) {
-        // lname_error.innerHTML = "Last Name cannot be empty";
-        // lname_error.setAttribute("class","error");
-        // Lname.setAttribute("style","border-color: red");
-        alert("User Name cannot be empty");
-    return false;
-    }     
-    else if (year-userYear<13) {  
-        alert("Minimum age should be 13 years");
-        // bday_error.innerHTML = "Minimum required age is 13 years";
-        // bday_error.setAttribute("class","error");
-        // bd.setAttribute("style","border-color: red");
-    return false;
+}
+    //noticing user
+    if((password.value.length > 8) && (regx.test(emailid.value)===true)  && ((year-userYear)>=13)){
+        alert("You have been successfully registered !");
+        signup.disabled=false;
+        
+
     }
-    else if (reg.test(emailid.value) === false) {  
-        alert("Invalid Email Address"); 
-    return false;
-    }
-    else if (pass.value.length<8){
-        alert("password length should be more 8 characters");
-    return false;
-    }
-    }
+    
+})
+
+
+

@@ -26,6 +26,11 @@ body{
         background:linear-gradient(360deg, #4c4f94 , #4fe8e8);
     }
     
+    #danger{
+        border:3px solid red;
+        outline:2px;
+     }
+
     .error {
         font-size: 12px;
         display: flex;
