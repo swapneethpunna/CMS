@@ -27,20 +27,24 @@ elements.forEach(element => {
     element.addEventListener('input', () => {
         let span_id = element.parentElement.children[2];
         if (element.value === "") {
+            signup.disabled=true;
             span_id.innerHTML="Field can't be empty";
             span_id.style.color='red';
             element.id = "danger";
 
         } else {
             span_id.textContent="";
+            signup.disabled=true;
         }
-
-        if((fname.value !=""   && Lname.value !="" ) && (usernam.value !=""  && emailid.value !="") &&( password.value !="" && bd.value  !="" ) ){
+        if((fname.value !==""  ) &&( Lname.value !=="" ) && (usernam.value !=="")  && (emailid.value !=="")  && (bd.value  !=="" ) ){
             signup.disabled=false;
         } 
+    })
+});
 
-        })
-    });
+    
+
+       
 
     //using date class
 const date = new Date();
@@ -49,7 +53,7 @@ const year = date.getFullYear(); //2022
 // const userYear = Birthday_date.value.split("-")[0]
 
 
-signup.addEventListener('click',()=>{
+signup.addEventListener('click',(e)=>{
     let userYear = bd.value.split("-")[0] // 2022-02-12
     userYear = parseInt(userYear)
 
@@ -62,27 +66,32 @@ signup.addEventListener('click',()=>{
     }
 
 //validating email
-    if(regx.test(emailid.value)===false){
+    else if(regx.test(emailid.value)===false){
         signup.disabled=true;
         emailid.id="danger"
         let span = emailid.parentElement.children[2];
         span.innerHTML="Invaild Email"
 
     //validating date
-
-    if (password.value.length < 8) { // remember to add span in html and ccs 
+}
+    else if (password.value.length < 8) { // remember to add span in html and ccs 
         pw_error.innerHTML = "Password length should not be less than 8 characters";
         pw_error.setAttribute("class","error");
         password.setAttribute("style","border-color: red");
     }
-}
+
+
     //noticing user
-    if((password.value.length > 8) && (regx.test(emailid.value)===true)  && ((year-userYear)>=13)){
-        // alert("You have been successfully registered !");
+    else if((password.value.length > 8) && (regx.test(emailid.value)===true)  && ((year-userYear)>=13)){
+        alert("You have been successfully registered !");
         signup.disabled=false;
         
 
     }
+
+   
+
+    
     
 })
 
