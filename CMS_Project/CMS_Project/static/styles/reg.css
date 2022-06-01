@@ -27,8 +27,8 @@ body{
     }
     
     #danger{
-        border:3px solid red;
-        outline:2px;
+        border:1.5px solid red;
+        outline:1px;
      }
 
     .error {

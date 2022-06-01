@@ -14,21 +14,21 @@ eye.addEventListener("click", function () {
 
 // validating email address
 
-var emailid= document.querySelector("#emailid");
-const signinbtn = document.querySelector("#signin");
-const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+// var emailid= document.querySelector("#emailid");
+// const signinbtn = document.querySelector("#signin");
+// const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
-signinbtn.addEventListener("click", function(e) {
-    if(reg.test(emailid.value) === false){
-        alert("Invalid Email Address"); 
-    }else if(pw.value.length<8){
-        alert("Password length should greater than 8 characters");
-    }else{
-        location.href='catalog.html';
-    }
-    //not to submit form
-    e.preventDefault();
-});
+// signinbtn.addEventListener("click", function(e) {
+//     if(reg.test(emailid.value) === false){
+//         alert("Invalid Email Address"); 
+//     }else if(pw.value.length<8){
+//         alert("Password length should greater than 8 characters");
+//     }else{
+//         location.href='catalog.html';
+//     }
+//     //not to submit form
+//     e.preventDefault();
+// });
 
 
 

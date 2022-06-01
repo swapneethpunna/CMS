@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center m-0" style="height: 100vh;">
           <div class="formm">
-            <form method="post" id="login" autocomplete="off" class="bg-light border p-4" style="box-shadow:3px 3px 3px rgba(0,0,0,0.5);">
+            <form method="POST" id="login" action="{% url 'login' %}" autocomplete="off" class="bg-light border p-4" style="box-shadow:3px 3px 3px rgba(0,0,0,0.5);">
                 {% csrf_token %}
                 <h2 class="title my-3 py-3 " style="color:#4c4f94; font-weight:550;">Enter your credentials</h2>
               <div class="form-row">
@@ -32,7 +32,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                     </div>
-                    <input type="email" class="input form-control" id="emailid" placeholder="Enter your email id" aria-label="Username" aria-describedby="basic-addon1" />
+                    <input type="email" name="email" class="input form-control" id="emailid" placeholder="Enter your email id" aria-label="Username" aria-describedby="basic-addon1" />
                   </div>
                 </div>
                 <div class="col-12">
@@ -40,7 +40,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                     </div>
-                    <input type="password" class="input form-control" id="password" placeholder="Password" required="true" aria-label="password" aria-describedby="passwordHelpBlock" > 
+                    <input type="password" name="password" class="input form-control" id="password" placeholder="Password" required="true" aria-label="password" aria-describedby="passwordHelpBlock" > 
                     <div class="input-group-append">
                       <span class="input-group-text";">
                         <i class="fas fa-eye" id="eye"></i>
@@ -48,21 +48,25 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12">
-                  <p id="passwordHelpInline" class="form-text"> Must be 8-20 characters long. </p>
-                </div>
-                <div class="col-12">
-                    <div class="container px-4">
-                        <input type="checkbox" class="form-check-input " id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                    </div>
-                </div>
-                <div class="col-sm-12 pt-3 text-right">
+                
+                <div class="col-sm-12 pb-3 text-left">
                    <a href="#">Forgot password?</a>
                 </div>
-                <div class="col-12">
+                <div>
+                  <!-- {% for message in messages %} -->
+                  {% if message %}
+                  <p style="color:red;">{{message}}</p>
+                  {% else %}
+                  <h5>No message</h5>
+                  {% endif %}
+                  <!-- {% endfor %} -->
+              </div>
+                <div class="col-12 text-right">
                   <button class="btn btn-primary" type="submit" id = "signin" name="signin">Log In</button>
                 </div>
+                <div style="text-align: center;">
+                  <p>Already have an account?<a href="{% url 'form' %}"> Sign up</a></p>
+              </div>
               </div>
             </form>
           </div>

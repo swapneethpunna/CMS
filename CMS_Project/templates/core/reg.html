@@ -24,7 +24,7 @@
         <div class="row d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="col-md-6">                
                 <div class="signup-form" id="cont">
-                    <form class="border p-4 bg-light shadow" action="{% url 'form' %}" onsubmit="validate()" method="POST">
+                    <form class="border p-4 bg-light shadow" action="{% url 'form' %}"  method="POST">
                         {% csrf_token %}
                         <div class="heading">
                             <b><h2 style="color:#4c4f94;font-weight: 100px;">Create an account</h2></b><hr>
@@ -66,7 +66,7 @@
                             <div>
                                 <!-- {% for message in messages %} -->
                                 {% if message %}
-                                <p>{{message}}</p>
+                                <p style="color:red;">{{message}}</p>
                                 {% else %}
                                 <h5>No message</h5>
                                 {% endif %}
@@ -76,7 +76,7 @@
                             <label>Password</label>
                             <div class="input-group mb-1 col-12">
                                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                                <input type="password" class="input form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="passwordHelpBlock" >
+                                <input type="password" class="input form-control" id="password" name="password" placeholder="Password" aria-label="password" aria-describedby="passwordHelpBlock" required>
                                 <span class="input-group-text";>
                                     <i class="fas fa-eye" id="eye"></i>
                                 </span>
@@ -95,6 +95,9 @@
                             
                             <div class="col-md-12 mt-4 justify-content-center d-flex">
                                 <button class="btn btn-primary" id="signup";>Sign up</button>
+                            </div><br>
+                            <div style="text-align: center;">
+                                <p>Already have an account?<a href="{% url 'login' %}"> Log in</a></p>
                             </div>
                             
                         </form>

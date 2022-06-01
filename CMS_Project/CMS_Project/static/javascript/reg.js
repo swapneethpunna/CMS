@@ -70,7 +70,7 @@ signup.addEventListener('click',(e)=>{
         signup.disabled=true;
         emailid.id="danger"
         let span = emailid.parentElement.children[2];
-        span.innerHTML="Invaild Email"
+        span.innerHTML="Invalid Email"
 
     //validating date
 }
